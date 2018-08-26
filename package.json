@@ -1,0 +1,37 @@
+{
+  "name": "agentk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaola-fed/agentk.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kaola-fed/agentk/issues"
+  },
+  "homepage": "https://github.com/kaola-fed/agentk#readme",
+  "dependencies": {
+    "del": "^3.0.0",
+    "graceful-process": "^1.2.0",
+    "is": "^3.2.1",
+    "measured-core": "^1.11.2",
+    "mkdirp": "^0.5.1",
+    "mz": "^2.7.0",
+    "pify": "^4.0.0",
+    "sdk-base": "^3.5.0"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0",
+    "power-assert": "^1.6.0"
+  }
+}

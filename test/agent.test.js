@@ -1,11 +1,13 @@
 const assert = require('power-assert');
 const path = require('path');
 const { AgentK } = require('../');
+const fs = require('../lib/utils/fs');
 
 describe('Agent', function() {
     let agentK;
 
-    before(function() {
+    before(async function() {
+        await fs.del(path.join(__dirname, 'fixtures/run'))
         agentK = new AgentK({
             reporter: ['filesystem'],
             tasks: [],
@@ -21,7 +23,10 @@ describe('Agent', function() {
     it('should collect results', async function() {
         await agentK.ready()
         const results = await agentK.collect();
+
         assert(results.length > 0);
+
+        agentK.report(results);
     });
 
     after(function() {

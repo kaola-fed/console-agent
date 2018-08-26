@@ -90,7 +90,6 @@ module.exports = {
         ],
         "indent": "off",
         "indent-legacy": "error",
-        "init-declarations": "error",
         "jsx-quotes": "error",
         "key-spacing": "error",
         "keyword-spacing": "off",

@@ -8,6 +8,7 @@ describe('Metrix', function() {
     let agentK;
     let metrix;
     const options = {
+        name: 'appName',
         reporter: ['filesystem'],
         tasks: [],
         rundir: path.join(__dirname, 'fixtures/run'),
@@ -27,6 +28,16 @@ describe('Metrix', function() {
 
     it('should metrix', async function() {
         metrix.getMetrix(['a']).counter('b').inc();
+    });
+
+    it('should collect', async function() {
+        const rs = await agentK.collect();
+        assert(rs.length > 0);
+    });
+
+    it('should report', async function() {
+        const rs = await agentK.report();
+        assert(rs.filesystem.data.process.length > 0);
     });
 
     after(function() {

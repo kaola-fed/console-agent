@@ -9,6 +9,7 @@ describe('Agent', function() {
     before(async function() {
         await fs.del(path.join(__dirname, 'fixtures/run'))
         agentK = new AgentK({
+            name: 'appName',
             reporter: ['filesystem'],
             tasks: [],
             rundir: path.join(__dirname, 'fixtures/run'),

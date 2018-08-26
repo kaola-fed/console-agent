@@ -7,7 +7,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "mocha test/agent.test.js",
+    "test": "mocha test",
     "cover": "nyc mocha test",
     "lint": "eslint lib test"
   },

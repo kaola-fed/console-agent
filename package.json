@@ -7,7 +7,8 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint lib test"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,7 @@
     "sdk-base": "^3.5.0"
   },
   "devDependencies": {
+    "eslint": "^5.4.0",
     "mocha": "^5.2.0",
     "power-assert": "^1.6.0"
   }

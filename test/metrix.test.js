@@ -41,6 +41,7 @@ describe('Metrix', function() {
     });
 
     after(function() {
-        agentK.kill()
+        agentK.kill();
+        process.exit(0);
     })
 });

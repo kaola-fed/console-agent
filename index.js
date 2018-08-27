@@ -1,3 +1,3 @@
-exports.AgentK = require('./lib/core/agentk');
+exports.KAgent = require('./lib/core/kagent');
 exports.MetrxLogger = require('./lib/core/metrix/logger');
-exports.startAgent = require('./lib/start');
+exports.startKAgent = require('./lib/start');

@@ -1,6 +1,6 @@
 const assert = require('power-assert');
 const path = require('path');
-const { AgentK } = require('../');
+const { KAgent } = require('../');
 const fs = require('../lib/utils/fs');
 
 describe('Agent', function() {
@@ -8,7 +8,7 @@ describe('Agent', function() {
 
     before(async function() {
         await fs.del(path.join(__dirname, 'fixtures/run'))
-        agentK = new AgentK({
+        agentK = new KAgent({
             name: 'appName',
             reporter: ['filesystem'],
             tasks: [],

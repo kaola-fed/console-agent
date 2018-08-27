@@ -1,4 +1,4 @@
-# agentk
+# kagent
 
 ![](https://img.shields.io/npm/v/agentk.svg?style=for-the-badge)
 ![https://travis-ci.org/kaola-fed/agentk](https://img.shields.io/travis-ci/kaola-fed/agentk.svg?branch=feature_megalo&style=for-the-badge)

@@ -42,7 +42,5 @@ describe('Metrix', function() {
 
     after(function() {
         agentK.kill();
-        // eslint-disable-next-line
-        process.exit(0);
     })
 });

@@ -1,4 +1,6 @@
 # agentk
 
-![](https://img.shields.io/npm/v/agentk.svg?style=flat-square)
-![](https://api.travis-ci.org/kaola-fed/agentk.svg?branch=master)
+![](https://img.shields.io/npm/v/agentk.svg?style=for-the-badge)
+![](https://img.shields.io/travis-ci/kaola-fed/agentk.svg?branch=feature_megalo&style=for-the-badge)
+![](https://img.shields.io/codecov/c/github/kaola-fed/agentk.svg?style=for-the-badge)
+

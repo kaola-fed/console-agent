@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "mocha test",
-    "cover": "nyc --reporter=lcov npm test",
+    "cover": "nyc npm test",
+    "cover:ci": "nyc --reporter=lcov npm test",
     "lint": "eslint lib test"
   },
   "repository": {

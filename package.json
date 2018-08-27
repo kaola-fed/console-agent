@@ -33,7 +33,8 @@
     "mz": "^2.7.0",
     "pidusage": "^2.0.16",
     "pify": "^4.0.0",
-    "sdk-base": "^3.5.0"
+    "sdk-base": "^3.5.0",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "eslint": "^5.4.0",

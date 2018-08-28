@@ -1,6 +1,6 @@
 # KAgent
 
-<p align=center>
+<p>
     <a href="https://github.com/kaola-fed/kagent">
         <img src="https://img.shields.io/npm/v/kagent.svg?style=for-the-badge"/>
     </a>
@@ -19,10 +19,10 @@
 
 ## 概念抽象
 ### Generator
-这是应用运行过程信息的生成者，一般会负责监听端口，处理`HTTP` 业务逻辑，进行业务所需要的计算，需要在运行过程中进行一些 Metrcs 的打点操作。
+生成应用运行的过程日志，一般会运行在 app 进程，需要在运行过程中进行一些 Metrics 的打点操作。
 
 ### Collector
-作为 Metrcs 的收集者，抽象出 Task 的概念，Collector 负责定期的执行 Task 任务，并合并所有 Task 的输出，作为当前的 Metrics 状态，后调用 Reporter 上报。
+作为 Metrics 的收集者，抽象出 Task 的概念，Collector 负责定期的执行 Task 任务，并合并所有 Task 的输出，作为当前的 Metrics 状态，后调用 Reporter 上报。
 
 #### Task
 Task 是 Collector 得以生成 Metrics 信息的载体，每个 Task 都允许设定执行时间，不设定执行时间，或是和默认的执行周期一致的，则会推入到 collect 阶段前执行。

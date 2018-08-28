@@ -11,7 +11,8 @@ describe('Agent', function() {
         agentK = new KAgent({
             name: 'appName',
             reporter: ['filesystem'],
-            tasks: [],
+            tasks: [
+            ],
             rundir: path.join(__dirname, 'fixtures/run'),
             files: {
                 'built-in': path.join(__dirname, 'fixtures/agentk/built-in.log'),
@@ -28,6 +29,18 @@ describe('Agent', function() {
         assert(results.length > 0);
 
         agentK.report(results);
+    });
+
+    it('should kagent fireOnTick', async function() {
+        for (let cron of agentK.cron) {
+            cron.fireOnTick();
+        }
+        // await agentK.ready()
+        // const results = await agentK.fireOnTick();
+
+        // assert(results.length > 0);
+
+        // agentK.report(results);
     });
 
     after(function() {

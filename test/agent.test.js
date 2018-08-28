@@ -35,12 +35,6 @@ describe('Agent', function() {
         for (let cron of agentK.cron) {
             cron.fireOnTick();
         }
-        // await agentK.ready()
-        // const results = await agentK.fireOnTick();
-
-        // assert(results.length > 0);
-
-        // agentK.report(results);
     });
 
     after(function() {

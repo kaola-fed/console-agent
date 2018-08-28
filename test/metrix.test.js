@@ -1,46 +1,35 @@
 const assert = require('power-assert');
-const path = require('path');
-const pify = require('pify');
-const { MetrxLogger, startKAgent } = require('../');
-const fs = require('../lib/utils/fs');
+const Meter = require('../lib/core/metrix/meter');
+const Timer = require('../lib/core/metrix/timer');
+const clearIntervals = require('@segment/clear-intervals');
 
 describe('Metrix', function() {
-    let agentK;
-    let metrix;
-    const options = {
-        name: 'appName',
-        reporter: ['filesystem'],
-        tasks: [],
-        rundir: path.join(__dirname, 'fixtures/run'),
-        files: {
-            'built-in': path.join(__dirname, 'fixtures/agentk/built-in.log'),
-            application: path.join(__dirname, 'fixtures/agentk/application.log'),
-            error: path.join(__dirname, 'fixtures/common-error.log')
-        }
-    }
-
     before(async function() {
-        await fs.del(path.join(__dirname, 'fixtures/run'))
-        agentK = await pify(startKAgent)(options);
-        metrix = new MetrxLogger(options);
-        await metrix.ready();
+        
     })
 
-    it('should metrix', async function() {
-        metrix.getMetrix(['a']).counter('b').inc();
+    it('should Meter works', async function() {
+        const meter = new Meter({
+            duration: 1
+        });
+        meter.mark();
+        assert(meter.toJSON().count === 1)
+        assert(meter.toJSON().rate === 1)
     });
 
-    it('should collect', async function() {
-        const rs = await agentK.collect();
-        assert(rs.length > 0);
-    });
+    it('should Timer works', async function() {
+        const timer = new Timer({
+            duration: 1
+        });
+        timer.update(1000);
 
-    it('should report', async function() {
-        const rs = await agentK.report();
-        assert(rs.filesystem.data.process.length > 0);
+        assert(timer.toJSON().meter.count === 1);
+        assert(timer.toJSON().meter.rate === 1);
+        assert(timer.toJSON().histogram.min === 1000);
+        assert(timer.toJSON().histogram.max === 1000);
     });
 
     after(function() {
-        agentK.kill();
+        clearIntervals();
     })
 });

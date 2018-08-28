@@ -7,8 +7,8 @@
     <a href="https://travis-ci.org/kaola-fed/agentk">
         <img src="https://img.shields.io/travis-ci/kaola-fed/kagent.svg?branch=feature_megalo&style=for-the-badge"/>
     </a>
-    <a href="https://codecov.io/gh/kaola-fed/agentk">
-        <img src="https://img.shields.io/codecov/c/github/kaola-fed/agentk.svg?style=for-the-badge"/>
+    <a href="https://codecov.io/gh/kaola-fed/kagent">
+        <img src="https://img.shields.io/codecov/c/github/kaola-fed/kagent.svg?style=for-the-badge"/>
     </a>
 </p>
 

@@ -1,6 +1,6 @@
-# KAgent
 
-<p>
+<p align=center>
+    <h1>KAgent</h1>
     <a href="https://github.com/kaola-fed/kagent">
         <img src="https://img.shields.io/npm/v/kagent.svg?style=for-the-badge"/>
     </a>
@@ -42,7 +42,7 @@ Task 是 Collector 得以生成 Metrics 信息的载体，每个 Task 都允许�
 负责与服务端系统的对接，包括服务端命令执行以及 Metrics 信息上报。
 
 #### Reporter
-由 Collector 驱动，进行 Metrics 的上报，内置落盘文件的 Reporter。
+由 Collector 驱动，进行 Metrics 上报，内置落盘文件的 Reporter。
 
 ##### Filesystem Reporter
 落盘 JSON 文件，一般可由系统 agent 采集，汇总到自家的监控系统。

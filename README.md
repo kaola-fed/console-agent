@@ -49,14 +49,6 @@ const metrix = new Metrix({
 });
 ```
 
-#### getTimer()
-```js
-const timer = metrix.getTimer();
-// some async thing
-// await xxx();
-timer.end();
-```
-
 #### getCounter()
 ```js
 const counter = metrix.getCounter();
@@ -70,11 +62,33 @@ const guage = metrix.getGuage();
 guage.setValue();
 ```
 
+#### getHistogram()
+```js
+const histogram = metrix.getHistogram();
+histogram.update(1);
+```
+
+#### getMeter()
+```js
+const meter = metrix.getMeter();
+meter.mark();
+
+```
+#### getTimer()
+```js
+const timer = metrix.getTimer();
+// some async thing
+// await xxx();
+timer.end();
+```
+
 #### addMetric(scope, metric, tag?)
 ```js
-metrix.addMetric(['access'], timer);
 metrix.addMetric(['connection'], counter);
 metrix.addMetric(['cpu'], guage);
+metrix.addMetric(['histogram'], histogram);
+metrix.addMetric(['meter'], meter);
+metrix.addMetric(['access'], timer);
 ```
 
 ## 概念抽象

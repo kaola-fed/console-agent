@@ -1,7 +1,7 @@
 const assert = require('power-assert');
 const path = require('path');
 const pify = require('pify');
-const { MetrxLogger, startKAgent } = require('../');
+const { Metrix, start } = require('../');
 const fs = require('../lib/utils/fs');
 
 const wait = function(seconds = 0) {
@@ -28,20 +28,56 @@ describe('Metrix', function() {
 
     before(async function() {
         await fs.del(path.join(__dirname, 'fixtures/run'))
-        agentK = await pify(startKAgent)(options);
-        metrix = new MetrxLogger(Object.assign({
+        agentK = await start(options);
+        
+        metrix = new Metrix(Object.assign({
             logger: console
         }, options));
         await metrix.ready();
     })
 
-    it('should metrix', async function() {
-        metrix.getMetrix(['a']).counter('b').inc();
+    it('should counter', async function() {
+        const counter = metrix.getCounter();
+        counter.inc();
+        metrix.addMetric(['a', 'b'], counter);
+    });
+
+
+    it('should getTimer', async function() {
+        const timer = metrix.getTimer();
+        timer.end();
+        metrix.addMetric(['c', 'd'], timer);
+    });
+
+
+    it('should getGuage', async function() {
+        const guage = metrix.getGuage();
+        guage.setValue(1);
+        metrix.addMetric(['e', 'f'], guage);
+    });
+
+    it('should getHistogram', async function() {
+        const histogram = metrix.getHistogram();
+        histogram.update(1);
+        metrix.addMetric(['g', 'h'], histogram);
+    });
+
+    it('should getMeter', async function() {
+        const meter = metrix.getMeter();
+        meter.mark();
+        metrix.addMetric(['i', 'j'], meter);
     });
 
     it('should collect', async function() {
         await wait(1000);
         const rs = await agentK.collect();
+        const m = rs[0];
+        assert(m.a.b === 1);
+        assert(m.c.d.meter.count === 1);
+        assert(m.c.d.histogram.count === 1);
+        assert(m.e.f === 1);
+        assert(m.g.h.count === 1);
+        assert(m.i.j.count === 1);
         assert(rs.length > 0);
     });
 

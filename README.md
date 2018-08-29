@@ -37,19 +37,44 @@ KAgent.start({
 });
 ```
 
-### getMetrix(scope, tag)
+### new Metrix(scope, tag)
 ```js
-const KAgent = require('kagent');
-const metrix = KAgent.getMetrix(['access']);
+const { Metrix } = require('kagent');
+const metrix = new Metrix({
+    files: {
+        'built-in': path.join(__dirname, 'fixtures/agentk/built-in.log'),
+        application: path.join(__dirname, 'fixtures/agentk/application.log'),
+        error: path.join(__dirname, 'fixtures/common-error.log')
+    }
+});
+```
 
-const timer = metrix.timer();
+#### getTimer()
+```js
+const timer = metrix.getTimer();
+// some async thing
+// await xxx();
+timer.end();
+```
 
-timer.end('hello world');
-
-const metrix2 = KAgent.getMetrix([]);
-const counter = metrix2.counter('connection');
+#### getCounter()
+```js
+const counter = metrix.getCounter();
 counter.inc();
 counter.dec();
+```
+
+#### getGuage()
+```js
+const guage = metrix.getGuage();
+guage.setValue();
+```
+
+#### addMetric(scope, metric, tag?)
+```js
+metrix.addMetric(['access'], timer);
+metrix.addMetric(['connection'], counter);
+metrix.addMetric(['cpu'], guage);
 ```
 
 ## 概念抽象

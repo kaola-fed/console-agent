@@ -1,3 +1,12 @@
-exports.KAgent = require('./lib/core/kagent');
-exports.MetrxLogger = require('./lib/core/metrix/logger');
-exports.startKAgent = require('./lib/start');
+const pify = require('pify');
+const Metrix = require('./lib/core/metrix');
+const startKAgent = require('./lib/start');
+const KAgent = require('./lib/core/kagent');
+
+
+exports.KAgent = KAgent;
+exports.startKAgent = startKAgent;
+
+
+exports.start = pify(startKAgent);
+exports.Metrix = Metrix;

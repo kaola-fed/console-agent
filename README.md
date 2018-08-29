@@ -13,9 +13,44 @@
 </p>
 
 ## 特性
-* 内置 Metrics 的业界系统度量体系，支持应用内 Metrics 打点；
+* 内置应用度量标准 Metrics，支持应用打点；
 * 内置 Node.js 进程级信息收集任务，支持外部扩展；
 * 内置 Filesystem Reporter 上报监控信息，支持自定义；
+
+## API 介绍
+### start(options, callback)
+```js
+const KAgent = require('kagent');
+KAgent.start({
+    name: 'appName',
+    reporter: ['filesystem'],
+    tasks: [],
+    rundir: path.join(__dirname, 'fixtures/run'),
+    flushInterval: 1000,
+    files: {
+        'built-in': path.join(__dirname, 'fixtures/agentk/built-in.log'),
+        application: path.join(__dirname, 'fixtures/agentk/application.log'),
+        error: path.join(__dirname, 'fixtures/common-error.log')
+    }
+}, (err, results) => {
+
+});
+```
+
+### getMetrix(scope, tag)
+```js
+const KAgent = require('kagent');
+const metrix = KAgent.getMetrix(['access']);
+
+const timer = metrix.timer();
+
+timer.end('hello world');
+
+const metrix2 = KAgent.getMetrix([]);
+const counter = metrix2.counter('connection');
+counter.inc();
+counter.dec();
+```
 
 ## 概念抽象
 ### Logger

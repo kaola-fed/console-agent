@@ -18,11 +18,11 @@
 * 内置 Filesystem Reporter 上报监控信息，支持自定义；
 
 ## 概念抽象
-### Generator
-生成应用运行的过程日志，一般会运行在 app 进程，需要在运行过程中进行一些 Metrics 的打点操作。
+### Logger
+应用运行的过程中的 Metrics 记录，会运行在 worker 进程。
 
 ### Collector
-作为 Metrics 的收集者，抽象出 Task 的概念，Collector 负责定期的执行 Task 任务，并合并所有 Task 的输出，作为当前的 Metrics 状态，后调用 Reporter 上报。
+Metrics 的收集者，负责定期的执行 Task 任务，并合并所有 Task 的输出，调用 Reporter 上报。
 
 #### Task
 Task 是 Collector 得以生成 Metrics 信息的载体，每个 Task 都允许设定执行时间，不设定执行时间，或是和默认的执行周期一致的，则会推入到 collect 阶段前执行。
@@ -38,8 +38,11 @@ Task 是 Collector 得以生成 Metrics 信息的载体，每个 Task 都允许�
 ##### Clean Log Task
 定期清除 KAgent 的运行日志，以防撑爆硬盘.
 
-### Connector
-负责与服务端系统的对接，包括服务端命令执行以及 Metrics 信息上报。
+### Agent
+服务端的代理人，包括：
+
+1. 执行服务端命令；
+2. 上报 Metrics 信息。
 
 #### Reporter
 由 Collector 驱动，进行 Metrics 上报，内置落盘文件的 Reporter。

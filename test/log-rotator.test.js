@@ -21,7 +21,8 @@ describe('Agent', function() {
 
     it('should clean log', async function() {
         await cleanLog.doTask({
-            rundir: path.join(__dirname, 'fixtures/run')
+            rundir: path.join(__dirname, 'fixtures/run'),
+            rootdir: path.join(require('os').homedir(), 'kagent', 'kagent-test')
         })
     });
 

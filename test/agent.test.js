@@ -9,7 +9,7 @@ describe('Agent', function() {
     before(async function() {
         await fs.del(path.join(__dirname, 'fixtures/run'))
         agentK = new KAgent({
-            name: 'appName',
+            name: 'kagent-test',
             reporter: ['filesystem'],
             tasks: [
             ],

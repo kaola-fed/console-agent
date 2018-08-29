@@ -29,7 +29,9 @@ describe('Metrix', function() {
     before(async function() {
         await fs.del(path.join(__dirname, 'fixtures/run'))
         agentK = await pify(startKAgent)(options);
-        metrix = new MetrxLogger(options);
+        metrix = new MetrxLogger(Object.assign({
+            logger: console
+        }, options));
         await metrix.ready();
     })
 

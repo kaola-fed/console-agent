@@ -37,7 +37,7 @@ KAgent.start({
 });
 ```
 
-### new Metrix(scope, tag)
+### new Metrix({ files })
 ```js
 const { Metrix } = require('kagent');
 const metrix = new Metrix({

@@ -4,7 +4,7 @@
     <a href="https://github.com/kaola-fed/kagent">
         <img src="https://img.shields.io/npm/v/kagent.svg?style=for-the-badge"/>
     </a>
-    <a href="https://travis-ci.org/kaola-fed/agentk">
+    <a href="https://travis-ci.org/kaola-fed/kagent">
         <img src="https://img.shields.io/travis-ci/kaola-fed/kagent.svg?branch=feature_megalo&style=for-the-badge"/>
     </a>
     <a href="https://codecov.io/gh/kaola-fed/kagent">
@@ -28,8 +28,8 @@ KAgent.start({
     rundir: path.join(__dirname, 'fixtures/run'),
     flushInterval: 1000,
     files: {
-        'built-in': path.join(__dirname, 'fixtures/agentk/built-in.log'),
-        application: path.join(__dirname, 'fixtures/agentk/application.log'),
+        'built-in': path.join(__dirname, 'fixtures/kagent/built-in.log'),
+        application: path.join(__dirname, 'fixtures/kagent/application.log'),
         error: path.join(__dirname, 'fixtures/common-error.log')
     }
 }, (err, results) => {
@@ -42,8 +42,8 @@ KAgent.start({
 const { Metrix } = require('kagent');
 const metrix = new Metrix({
     files: {
-        'built-in': path.join(__dirname, 'fixtures/agentk/built-in.log'),
-        application: path.join(__dirname, 'fixtures/agentk/application.log'),
+        'built-in': path.join(__dirname, 'fixtures/kagent/built-in.log'),
+        application: path.join(__dirname, 'fixtures/kagent/application.log'),
         error: path.join(__dirname, 'fixtures/common-error.log')
     }
 });

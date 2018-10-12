@@ -1,6 +1,5 @@
 const assert = require('power-assert');
 const path = require('path');
-const pify = require('pify');
 const { Metrix, start } = require('../');
 const fs = require('../lib/utils/fs');
 
@@ -11,7 +10,7 @@ const wait = function(seconds = 0) {
 }
 
 describe('Metrix', function() {
-    let agentK;
+    let kAgent;
     let metrix;
     const options = {
         name: 'appName',
@@ -20,15 +19,15 @@ describe('Metrix', function() {
         rundir: path.join(__dirname, 'fixtures/run'),
         flushInterval: 1000,
         files: {
-            'built-in': path.join(__dirname, 'fixtures/agentk/built-in.log'),
-            application: path.join(__dirname, 'fixtures/agentk/application.log'),
+            'built-in': path.join(__dirname, 'fixtures/kagent/built-in.log'),
+            application: path.join(__dirname, 'fixtures/kagent/application.log'),
             error: path.join(__dirname, 'fixtures/common-error.log')
         }
     }
 
     before(async function() {
         await fs.del(path.join(__dirname, 'fixtures/run'))
-        agentK = await start(options);
+        kAgent = await start(options);
         
         metrix = new Metrix(Object.assign({
             logger: console
@@ -70,7 +69,7 @@ describe('Metrix', function() {
 
     it('should collect', async function() {
         await wait(1000);
-        const rs = await agentK.collect();
+        const rs = await kAgent.collect();
         const m = rs[0];
         assert(m.a.b === 1);
         assert(m.c.d.meter.count === 1);
@@ -82,12 +81,12 @@ describe('Metrix', function() {
     });
 
     it('should report', async function() {
-        const rs = await agentK.report();
+        const rs = await kAgent.report();
         assert(rs.filesystem.data.process.length > 0);
     });
 
     after(function() {
-        agentK.kill();
+        kAgent.kill();
         metrix.stop();
     })
 });

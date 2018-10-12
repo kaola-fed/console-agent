@@ -11,8 +11,8 @@ describe('Agent', function() {
     it('should rotate log', async function() {
         await logRotator.doTask({
             files: {
-                'built-in': path.join(__dirname, 'fixtures/agentk/built-in.log'),
-                application: path.join(__dirname, 'fixtures/agentk/application.log'),
+                'built-in': path.join(__dirname, 'fixtures/kagent/built-in.log'),
+                application: path.join(__dirname, 'fixtures/kagent/application.log'),
                 error: path.join(__dirname, 'fixtures/common-error.log')
             }
         })
@@ -27,6 +27,5 @@ describe('Agent', function() {
     });
 
     after(function() {
-        // agentK.stop();
     })
 });

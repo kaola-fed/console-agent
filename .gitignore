@@ -1,7 +1,7 @@
 # Logs
 logs
 *.log
-!test/fixtures/agentk/*.log
+!test/fixtures/kagent/*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -62,3 +62,4 @@ typings/
 .next
 test/fixtures/run/
 .vscode/launch.json
+test/fixtures/kagent/*.log.*

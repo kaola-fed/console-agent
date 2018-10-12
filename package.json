@@ -17,15 +17,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kaola-fed/agentk.git"
+    "url": "git+https://github.com/kaola-fed/kagent.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kaola-fed/agentk/issues"
+    "url": "https://github.com/kaola-fed/kagent/issues"
   },
-  "homepage": "https://github.com/kaola-fed/agentk#readme",
+  "homepage": "https://github.com/kaola-fed/kagent#readme",
   "dependencies": {
     "@segment/clear-intervals": "^2.0.0",
     "cron": "^1.4.1",

@@ -30,25 +30,8 @@ async function init() {
     sock
   });
 
-  const body = new Buffer('hello');
-  const data = new Buffer(8 + body.length);
-
-  data.writeInt32BE(1, 0);
-  data.writeInt32BE(body.length, 4);
-  body.copy(data, 8, 0);
-
-
-  follower.client.send({
-    id: 1,
-    data,
-    timeout: 5000,
-  }, (err, res) => {
-    if (err) {
-      console.log(err);
-    }
-    console.log(res.toString());
-  });
   await follower.ready();
+  await follower.sendToLeader('hello')
 }
 
 if (config) {

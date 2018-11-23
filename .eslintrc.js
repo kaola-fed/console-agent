@@ -36,7 +36,6 @@ module.exports = {
         "camelcase": "error",
         "capitalized-comments": "off",
         "class-methods-use-this": "off",
-        "comma-dangle": "error",
         "comma-spacing": [
             "error",
             {
@@ -89,7 +88,9 @@ module.exports = {
             "beside"
         ],
         "indent": "off",
-        "indent-legacy": "error",
+        "indent-legacy": [
+            "error", 2
+        ],
         "jsx-quotes": "error",
         "key-spacing": "error",
         "keyword-spacing": "off",
@@ -187,7 +188,6 @@ module.exports = {
         "no-shadow": "error",
         "no-shadow-restricted-names": "error",
         "no-spaced-func": "error",
-        "no-sync": "error",
         "no-tabs": "error",
         "no-template-curly-in-string": "error",
         "no-ternary": "off",

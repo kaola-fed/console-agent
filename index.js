@@ -3,39 +3,39 @@ const { Loader, Supervisor, Competition, Follower, Prepare } = require('./lib');
 const loader = new Loader();
 const config = loader.load();
 
-const getSock = require('./lib/utils/sock');
+const getPort = require('./lib/utils/port');
 
 
-async function init() {
+async function launch() {
   const prepare = new Prepare();
   await prepare.ready();
 
-  const sock = getSock(prepare.sockdir);
+  const portfile = getPort(prepare.portsdir);
 
   const competition = new Competition({
-    sock
+    port: portfile
   });
   await competition.ready();
 
+  const { port } = competition;
   if (competition.success) {
-    console.log('竞争成功，当前进程将 fork 出 Supervisor 进程');
+    console.log(`Current process(${process.pid}) whill fork a Supervisor process`);
+
     const supervisor = new Supervisor({
-      sock
+      port
     });
     await supervisor.ready();
-    console.log('已 fork 出 Supervisor');
+    console.log('Supervisor is forked');
   }
 
   const follower = new Follower({
-    sock
+    port
   });
-
   await follower.ready();
-  await follower.sendToLeader('hello')
 }
 
 if (config) {
-  init(config)
+  launch(config)
     .catch((e) => {
       console.error(e);
     })

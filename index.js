@@ -1,9 +1,9 @@
-const { Loader, Supervisor, Competition, Follower, Prepare } = require('./lib');
+const { Loader, Supervisor, Follower, Prepare, KAgent } = require('./lib');
 const loader = new Loader();
-const config = loader.load();
+const localConfig = loader.load();
 const logger = console;
 
-async function launch() {
+async function launch(config) {
   const prepare = new Prepare({
     logger
   });
@@ -14,7 +14,7 @@ async function launch() {
   logger.info(`[${process.pid}] Try to fight for Supervisor role.`);
 
   const supervisor = new Supervisor({
-    port
+    port, agentConfig: config
   });
   await supervisor.ready();
 
@@ -29,13 +29,18 @@ async function launch() {
     logger
   });
   await follower.ready();
+
+  const kAgent = new KAgent({
+    client: follower
+  });
+  await kAgent.ready();
 }
 
-if (config) {
-  launch(config)
+if (localConfig) {
+  launch(localConfig)
     .catch((e) => {
       logger.error(e);
-    })
+    });
 }
 
 module.exports = () => {

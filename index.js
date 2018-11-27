@@ -1,35 +1,32 @@
 const { Loader, Supervisor, Competition, Follower, Prepare } = require('./lib');
-
 const loader = new Loader();
 const config = loader.load();
-
-const getPort = require('./lib/utils/port');
-
+const logger = console;
 
 async function launch() {
-  const prepare = new Prepare();
+  const prepare = new Prepare({
+    logger
+  });
   await prepare.ready();
 
-  const portfile = getPort(prepare.portsdir);
+  const { port } = prepare;
 
-  const competition = new Competition({
-    port: portfile
+  logger.info(`[${process.pid}] Try to fight for Supervisor role.`);
+
+  const supervisor = new Supervisor({
+    port
   });
-  await competition.ready();
+  await supervisor.ready();
 
-  const { port } = competition;
-  if (competition.success) {
-    console.log(`Current process(${process.pid}) whill fork a Supervisor process`);
-
-    const supervisor = new Supervisor({
-      port
-    });
-    await supervisor.ready();
-    console.log('Supervisor is forked');
+  if (supervisor.success) {
+    logger.info(`Current process(${process.pid}) forked Supervisor`);
   }
 
+  logger.info(`[${process.pid}] Try to establish a connection with the Leader(port: ${port})`);
+
   const follower = new Follower({
-    port
+    port,
+    logger
   });
   await follower.ready();
 }
@@ -37,7 +34,7 @@ async function launch() {
 if (config) {
   launch(config)
     .catch((e) => {
-      console.error(e);
+      logger.error(e);
     })
 }
 

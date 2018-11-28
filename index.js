@@ -26,7 +26,7 @@ async function launch(target, config) {
 
   const follower = new Follower({
     port,
-    logger
+    logger,
   });
   await follower.ready();
 

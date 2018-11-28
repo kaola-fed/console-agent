@@ -41,6 +41,7 @@
     "pidusage": "^2.0.16",
     "pify": "^4.0.0",
     "sdk-base": "^3.5.0",
+    "socket.io": "^2.1.1",
     "uuid": "^3.3.2"
   },
   "devDependencies": {

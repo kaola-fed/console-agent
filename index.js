@@ -1,4 +1,4 @@
-const { Loader, Supervisor, Follower, Prepare, kAgent } = require('./lib');
+const { Loader, Supervisor, Follower, Prepare, kagent } = require('./lib');
 const loader = new Loader();
 const localConfig = loader.load();
 const logger = console;
@@ -33,13 +33,13 @@ async function launch(target, config) {
   target.init(follower);
 }
 
-module.exports = kAgent;
+module.exports = kagent;
 
 if (localConfig) {
-  launch(kAgent, localConfig)
+  launch(kagent, localConfig)
     .catch((e) => {
       logger.error(e);
     });
 } else {
-  module.exports.launch = (config) => launch(kAgent, config);
+  module.exports.launch = (config) => launch(kagent, config);
 }

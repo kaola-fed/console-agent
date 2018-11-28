@@ -1,1 +1,0 @@
-exports.KAGENT_RESULTS_PREFIX = 'kagent-results-';

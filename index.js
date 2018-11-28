@@ -1,4 +1,4 @@
-const { Loader, Supervisor, Follower, Prepare, kagent } = require('./lib');
+const { Loader, Supervisor, Client, Prepare, kagent } = require('./lib');
 const loader = new Loader();
 const localConfig = loader.load();
 const logger = console;
@@ -24,13 +24,14 @@ async function launch(target, config) {
 
   logger.info(`[${process.pid}] Try to establish a connection with the Leader(port: ${port})`);
 
-  const follower = new Follower({
+  const client = new Client({
     port,
     logger,
+    isMaster: supervisor.success
   });
-  await follower.ready();
+  await client.ready();
 
-  target.init(follower);
+  target.init(client);
 }
 
 module.exports = kagent;

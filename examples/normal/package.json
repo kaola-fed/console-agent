@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "start": "node -r ../../index.js index.js"
+  }
+}

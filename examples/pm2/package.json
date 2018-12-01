@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "start": "pm2 start ./index.js --node-args '-r ../../index.js' -i 2"
+  }
+}

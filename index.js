@@ -1,46 +1,16 @@
-const { Loader, Supervisor, Client, Prepare, kagent } = require('./lib');
+const { Loader, kagent, launch } = require('./lib');
 const loader = new Loader();
 const localConfig = loader.load();
 const logger = console;
 
-async function launch(target, config) {
-  const prepare = new Prepare({
-    logger
-  });
-  await prepare.ready();
-
-  const { port } = prepare;
-
-  logger.info(`[${process.pid}] Try to fight for Supervisor role.`);
-
-  const supervisor = new Supervisor({
-    port, agentConfig: config
-  });
-  await supervisor.ready();
-
-  if (supervisor.success) {
-    logger.info(`Current process(${process.pid}) forked Supervisor`);
-  }
-
-  logger.info(`[${process.pid}] Try to establish a connection with the Leader(port: ${port})`);
-
-  const client = new Client({
-    port,
-    logger,
-    isMaster: supervisor.success
-  });
-  await client.ready();
-
-  target.init(client);
-}
-
 module.exports = kagent;
 
+
 if (localConfig) {
-  launch(kagent, localConfig)
+  launch(localConfig)
     .catch((e) => {
       logger.error(e);
     });
 } else {
-  module.exports.launch = (config) => launch(kagent, config);
+  module.exports.launch = (config) => launch(config);
 }

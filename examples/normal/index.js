@@ -1,5 +1,9 @@
-const http = require('http');
+const Koa = require('koa');
+const app = new Koa();
 
-http.createServer((req, res) => {
-  res.end('hello');
-}).listen(9000);
+app.use(async function (ctx) {
+  // throw new Error('hello');
+  ctx.body = 'body';
+})
+
+app.listen(9000);

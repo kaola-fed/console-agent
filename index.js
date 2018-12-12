@@ -4,7 +4,7 @@ const localConfig = loader.load();
 const logger = console;
 
 module.exports = kagent;
-
+module.exports.ready = require('./lib/utils/ready');
 
 if (localConfig) {
   launch(localConfig)

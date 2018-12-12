@@ -1,5 +1,8 @@
 {
   "scripts": {
     "start": "node -r ../../index.js index.js"
+  },
+  "devDependencies": {
+    "koa": "^2.6.2"
   }
 }

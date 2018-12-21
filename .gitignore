@@ -63,3 +63,4 @@ typings/
 test/fixtures/run/
 .vscode/launch.json
 test/fixtures/kagent/*.log.*
+examples/normal/run/console-agent-error.json

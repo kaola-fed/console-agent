@@ -1,7 +1,7 @@
 
 <p align=center>
-    <h1>KAgent</h1>
-    <a href="https://github.com/kaola-fed/kagent">
+    <h1>console-agent</h1>
+    <!-- <a href="https://github.com/kaola-fed/kagent">
         <img src="https://img.shields.io/npm/v/kagent.svg?style=for-the-badge"/>
     </a>
     <a href="https://travis-ci.org/kaola-fed/kagent">
@@ -9,13 +9,13 @@
     </a>
     <a href="https://codecov.io/gh/kaola-fed/kagent">
         <img src="https://img.shields.io/codecov/c/github/kaola-fed/kagent.svg?style=for-the-badge"/>
-    </a>
+    </a> -->
 </p>
 
 ## 特性
-* 内置应用度量标准 Metrics，支持应用打点；
-* 内置 Node.js 进程级信息收集任务，支持外部扩展；
-* 内置 Filesystem Reporter 上报监控信息，支持自定义；
+* Leader/Follower 进程模型，保障监控模块高可用；
+* 内置进程监控探针，采集进程信息；
+* 与 connection 模块维持长连接，上报监控信息与执行远程端命令
 
 ## API 介绍
 

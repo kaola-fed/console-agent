@@ -12,6 +12,10 @@
     </a> -->
 </p>
 
+## 架构图
+### console-agent
+![](https://user-images.githubusercontent.com/10825163/50828911-b761f200-137d-11e9-90f8-f94db6d9eed3.png)
+
 ## 特性
 * Leader/Follower 进程模型，保障监控模块高可用；
 * 内置进程监控探针，采集进程信息；

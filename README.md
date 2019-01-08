@@ -1,7 +1,7 @@
 
 <p align=center>
     <h1>console-agent</h1>
-    <!-- <a href="https://github.com/kaola-fed/kagent">
+    <a href="https://github.com/kaola-fed/kagent">
         <img src="https://img.shields.io/npm/v/kagent.svg?style=for-the-badge"/>
     </a>
     <a href="https://travis-ci.org/kaola-fed/kagent">
@@ -9,7 +9,7 @@
     </a>
     <a href="https://codecov.io/gh/kaola-fed/kagent">
         <img src="https://img.shields.io/codecov/c/github/kaola-fed/kagent.svg?style=for-the-badge"/>
-    </a> -->
+    </a>
 </p>
 
 ## 架构图

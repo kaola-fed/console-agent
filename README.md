@@ -13,7 +13,7 @@
 </p>
 
 ## 架构图
-### console-agent
+### agent 与 connection 交互
 ![](https://user-images.githubusercontent.com/10825163/50828911-b761f200-137d-11e9-90f8-f94db6d9eed3.png)
 
 ## 特性

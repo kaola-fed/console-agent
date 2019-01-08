@@ -26,9 +26,9 @@
 #### 1. 进入系统
 ![](https://user-images.githubusercontent.com/10825163/50830874-1296e300-1384-11e9-8872-dee5d2a1a4b2.png)
 #### 2. 创建应用
-![](https://user-images.githubusercontent.com/10825163/50830883-19255a80-1384-11e9-9f99-e2b37bc52221.png)
-#### 3. 记录 app_id 与 app_secret
 ![](https://user-images.githubusercontent.com/10825163/50830884-1b87b480-1384-11e9-9ee9-2fd4b49c9c8e.png)
+#### 3. 记录 app_id 与 app_secret
+![](https://user-images.githubusercontent.com/10825163/50830883-19255a80-1384-11e9-9f99-e2b37bc52221.png)
 
 ### 安装依赖
 ```bash

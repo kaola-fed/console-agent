@@ -1,5 +1,5 @@
 {
-  "name": "kagent",
+  "name": "console-agent",
   "version": "0.1.9",
   "description": "",
   "main": "index.js",
@@ -17,15 +17,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kaola-fed/kagent.git"
+    "url": "git+https://github.com/kaola-fed/console-agent.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kaola-fed/kagent/issues"
+    "url": "https://github.com/kaola-fed/console-agent/issues"
   },
-  "homepage": "https://github.com/kaola-fed/kagent#readme",
+  "homepage": "https://github.com/kaola-fed/console-agent#readme",
   "dependencies": {
     "@segment/clear-intervals": "^2.0.0",
     "cron": "^1.4.1",

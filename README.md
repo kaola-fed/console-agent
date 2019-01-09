@@ -70,7 +70,7 @@ agent.ready(() => {
 });
 ```
 
-### 埋入探针 API
+### 探针 API
 #### agent.guage
 ```js
 const getMysqlConnections = () => {};

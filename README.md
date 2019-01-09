@@ -45,10 +45,11 @@ module.exports = {
 }
 ```
 
-### 预加载
+### 启动
 ```bash
 $ node index.js --require ./node_modules/console-agent/index.js
 ```
+*egg 用户推荐使用 [egg-console-agent](https://github.com/kaola-fed/egg-console-agent)*
 
 ## 使用
 ### 模块引入
